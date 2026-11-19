@@ -1,7 +1,7 @@
 # MEMORY.md — Prueba técnica QA Farmatodo
 
 Memoria viva del proyecto. Leer primero al empezar un chat nuevo.
-Ubicación: la carpeta raíz de este repositorio.
+Ubicación: la carpeta raíz de este repositorio. Usuario de GitHub de Fernando: `FerPazAutomation`. Repo: https://github.com/FerPazAutomation/Farmatodo-QA-Prueba-Tecnica
 
 ## 1. Estado general (19/11/2026)
 
@@ -14,7 +14,7 @@ Ubicación: la carpeta raíz de este repositorio.
 | 3 UX Farmatodo | Hecho, en formato de ficha. BUG-006 precio distinto según camino (verificado desktop, tablet y mobile), BUG-007 «+» tapa el nombre (mobile), BUG-008 «1 productos» (desktop+mobile). OBS-01..04 como observaciones | `docs/03-reporte-ux-farmatodo.md`, capturas en `evidencias/farmatodo/` |
 | 4 Algoritmo | Hecho. 37/37 pruebas + página web local (19/19). Salida del enunciado (14 / 99 / farmatodo: 6) verificada y documentada en `docs/04` | `src/word-frequency/`, `docs/04-contador-frecuencia-palabras.md` |
 | Docs extra | Hechos | `README.md`, `docs/01-resumen-ejecutivo.md`, `docs/05-glosario.md`. El borrador del correo se quitó de `docs/` (ver pendiente 2) |
-| Git | Repo **local** inicializado y commiteado. **Sin remoto**: no se creó repo en GitHub ni se hizo push | — |
+| Git | Publicado en GitHub (usuario `FerPazAutomation`): https://github.com/FerPazAutomation/Farmatodo-QA-Prueba-Tecnica | — |
 
 **Convención de nombres (pedido de Fernando 19/11 15:38):** bugs `BUG-xxx`, observaciones `OBS-xx`. Cada captura lleva el nombre del bug y la plataforma: `BUG-006 [Mobile] Título.png`. El reporter genera las capturas de wordcounter con ese mismo formato (`BUG-xxx [Plataforma] Título - ED-xx.png`). Al agregar un bug nuevo: ficha en `docs/` y captura con el mismo nombre.
 
@@ -90,7 +90,7 @@ npm run typecheck
 
 ## 6. Pendientes que dependen de Fernando
 
-1. **Crear el repo en GitHub, compartirlo y hacer push** (no se hizo sin tu OK). Comandos: `git remote add origin <url>` y `git push -u origin main`.
+1. ✅ **Repo publicado en GitHub (19/11):** https://github.com/FerPazAutomation/Farmatodo-QA-Prueba-Tecnica (rama `main`, historial limpio de 1 commit). Verificado con un clon limpio: `npm install`, `typecheck`, 37/37 del algoritmo, 19/19 del visor y 36 enlaces de `README.md` y `docs/` sin romper. Falta: confirmar que el repo es visible para Farmatodo (hoy es público) y poner este enlace en el correo.
 2. **Redactar y enviar el correo único** con preguntas y supuestos. El borrador se quitó de `docs/` (19/11) por decisión de Fernando; sigue en el historial de git (`git show HEAD:docs/05-correo-preguntas-y-supuestos.md`) si hay que recuperarlo. Confirmar destinatario. Solo se puede mandar uno.
 3. Confirmar los 3 problemas de UX elegidos (hay 4 observaciones adicionales por si prefiere cambiar alguno).
 4. Opcional: probar BUG-007 en un celular real y revisar a mano el selector de ciudad (no se pudo automatizar) y la burbuja «1» de la grilla (resultado no concluyente).
