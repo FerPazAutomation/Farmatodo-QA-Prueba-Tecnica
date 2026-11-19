@@ -1,0 +1,7 @@
+node_modules/
+# Se genera en cada ejecución (una ejecución de referencia se guarda a propósito en resultados-referencia/)
+reports/
+test-results/
+playwright-report/
+*.log
+.env

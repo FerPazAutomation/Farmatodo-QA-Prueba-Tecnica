@@ -1,0 +1,256 @@
+<!doctype html>
+<!--
+  ARCHIVO GENERADO: visor/contador-palabras.html
+  NO EDITAR A MANO. La página se edita en src/word-frequency/visor/plantilla.html y se regenera con:
+      npm run visor:construir
+  El algoritmo que está dentro del <script> es el mismo código de src/word-frequency/core.ts (el que usa `npm run frecuencia`).
+  Desarrollado con un asistente de IA (Cursor); ver docs/04-contador-frecuencia-palabras.md.
+-->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contador de frecuencia de palabras</title>
+<style>
+  *{box-sizing:border-box}
+  body{font-family:Segoe UI,Arial,sans-serif;margin:0;background:#f5f6f8;color:#1c2330}
+  header{background:#0b5ed7;color:#fff;padding:24px 32px}
+  header h1{margin:0 0 4px;font-size:24px} header p{margin:0;opacity:.9}
+  main{max-width:1000px;margin:0 auto;padding:24px}
+  .panel{background:#fff;border-radius:10px;padding:16px 20px;margin-bottom:20px;box-shadow:0 1px 3px #0002}
+  label.titulo{display:block;font-weight:600;margin-bottom:8px}
+  textarea{width:100%;min-height:160px;padding:10px 12px;border:1px solid #c8cfda;border-radius:8px;font:15px/1.5 Segoe UI,Arial,sans-serif;resize:vertical}
+  textarea:focus{outline:2px solid #0b5ed7;border-color:#0b5ed7}
+  .acciones{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+  button,.boton-archivo{background:#0b5ed7;color:#fff;border:0;border-radius:6px;padding:8px 14px;font:600 14px Segoe UI,Arial,sans-serif;cursor:pointer}
+  button.secundario,.boton-archivo{background:#e8edf5;color:#1c2330}
+  button:hover,.boton-archivo:hover{filter:brightness(.95)}
+  .boton-archivo input{display:none}
+  #nombre-archivo{font-size:13px;color:#52607a}
+  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+  .kpi{background:#fff;border-radius:10px;padding:16px;text-align:center;box-shadow:0 1px 3px #0002}
+  .kpi b{display:block;font-size:34px;color:#0b5ed7}
+  .barra-opciones{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+  .barra-opciones h2{margin:0;font-size:18px}
+  select{padding:6px 8px;border:1px solid #c8cfda;border-radius:6px;font-size:14px}
+  table{width:100%;border-collapse:collapse}
+  th,td{padding:8px 10px;text-align:left;border-bottom:1px solid #eee;font-size:14px} th{background:#eef1f6}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  td.palabra{font-weight:600;word-break:break-word}
+  .barra{background:#e8edf5;border-radius:4px;height:12px;min-width:120px}
+  .barra i{display:block;height:100%;background:#0b5ed7;border-radius:4px}
+  .nota{font-size:13px;color:#52607a;margin:10px 0 0}
+  .vacio{padding:24px;text-align:center;color:#52607a}
+  details{margin-top:6px} summary{cursor:pointer;font-weight:600}
+  pre{background:#f0f2f6;padding:12px;border-radius:8px;overflow:auto;max-height:320px;font-size:13px}
+  .reglas{background:#fff8e1;border:1px solid #ffe08a;border-radius:8px;padding:12px 16px;font-size:14px}
+  .reglas ul{margin:6px 0 0;padding-left:20px}
+  footer{max-width:1000px;margin:0 auto;padding:0 24px 32px;font-size:12px;color:#52607a}
+  [hidden]{display:none !important}
+  @media(max-width:700px){.kpis{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Contador de frecuencia de palabras</h1>
+  <p>Cuenta palabras y caracteres, y muestra cuántas veces y qué porcentaje representa cada palabra. Funciona sin internet.</p>
+</header>
+<main>
+  <section class="panel">
+    <label class="titulo" for="texto">Escribí o pegá un texto, o cargá un archivo .txt</label>
+    <textarea id="texto" spellcheck="false" placeholder="Por ejemplo: farmatodo cuida tu salud"></textarea>
+    <div class="acciones">
+      <label class="boton-archivo">Cargar archivo .txt<input type="file" id="archivo" accept=".txt,text/plain"></label>
+      <button type="button" class="secundario" id="btn-ejemplo">Usar ejemplo</button>
+      <button type="button" class="secundario" id="btn-limpiar">Limpiar</button>
+      <span id="nombre-archivo"></span>
+    </div>
+  </section>
+
+  <div class="kpis" aria-live="polite">
+    <div class="kpi"><b id="total-palabras">0</b>Palabras</div>
+    <div class="kpi"><b id="total-caracteres">0</b>Caracteres</div>
+    <div class="kpi"><b id="total-distintas">0</b>Palabras distintas</div>
+  </div>
+
+  <section class="panel">
+    <div class="barra-opciones">
+      <h2>Palabras más repetidas</h2>
+      <label>Mostrar
+        <select id="cantidad-mostrar">
+          <option value="10">las 10 primeras</option>
+          <option value="25">las 25 primeras</option>
+          <option value="50">las 50 primeras</option>
+          <option value="0" selected>todas</option>
+        </select>
+      </label>
+    </div>
+    <div id="estado-vacio" class="vacio">Todavía no hay palabras para mostrar. Escribí un texto arriba o cargá un archivo.</div>
+    <table id="tabla-resultados" hidden>
+      <thead><tr><th class="num">Puesto</th><th>Palabra</th><th class="num">Veces</th><th class="num">Porcentaje</th><th>Proporción</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <p class="nota" id="aviso-limite" hidden></p>
+    <p class="nota">
+      <strong>Porcentaje</strong> = veces que aparece la palabra ÷ total de palabras del texto (contando repeticiones).<br>
+      <strong>Empates:</strong> si dos palabras tienen el mismo puesto, aparecen la misma cantidad de veces y se ordenan alfabéticamente (según el español).
+    </p>
+  </section>
+
+  <section class="panel">
+    <details>
+      <summary>Ver la salida de texto (idéntica a la del programa de consola <code>npm run frecuencia</code>)</summary>
+      <pre id="salida-texto"></pre>
+    </details>
+  </section>
+
+  <section class="reglas">
+    <strong>Reglas que aplica (las mismas del programa de consola):</strong>
+    <ul>
+      <li><strong>Palabra:</strong> bloque de texto entre espacios o saltos de línea que tenga al menos una letra, un número o un emoji. <code>hola_mundo</code>, <code>e-mail</code> e <code>info@farmatodo.com</code> son una palabra cada una.</li>
+      <li><strong>Mayúsculas y puntuación:</strong> <code>Hola,</code>, <code>hola.</code> y <code>HOLA</code> son la misma palabra. Se ignora la puntuación de los bordes y se conserva la interna.</li>
+      <li><strong>Tildes:</strong> <code>canción</code> escrita con la tilde suelta o integrada es la misma palabra.</li>
+      <li><strong>Caracteres:</strong> lo que una persona ve como un símbolo (un emoji cuenta 1), con espacios y sin saltos de línea.</li>
+      <li><strong>Solo símbolos:</strong> <code>!!!</code> o <code>---</code> no son palabras.</li>
+    </ul>
+  </section>
+</main>
+<footer>
+  Esta página trae dentro el mismo código del programa de consola (<code>src/word-frequency/core.ts</code>), generado con <code>npm run visor:construir</code>.
+  El texto que escribís o el archivo que cargás se procesan en tu navegador y no se envían a ningún lado.
+  Desarrollado con un asistente de IA (Cursor).
+</footer>
+
+<script>
+/*__ALGORITMO__*/
+</script>
+<script>
+(function () {
+  "use strict";
+  // El algoritmo llega desde el script de arriba: es el mismo código del programa de consola.
+  var analyzeText = AlgoritmoFrecuencia.analyzeText;
+  var formatReport = AlgoritmoFrecuencia.formatReport;
+
+  var MAX_FILAS_VISIBLES = 2000; // tope de filas dibujadas, para que un texto enorme no congele la página
+  var EJEMPLO = "farmatodo farmatodo farmatodo farmatodo farmatodo cuida cuida tu salud\nfarmatodo cuida toda tu salud";
+
+  function $(id) { return document.getElementById(id); }
+
+  var secuencia = 0; // para descartar resultados viejos si el texto cambia mientras se calcula
+  var temporizador = null;
+
+  // Formato del porcentaje: un decimal y coma, por ejemplo "42,9 %".
+  function porcentaje(veces, total) {
+    return (veces * 100 / total).toFixed(1).replace(".", ",") + " %";
+  }
+
+  // Puesto con empates ("ranking de competencia"): las palabras con la misma cantidad comparten puesto (1, 2, 3, 3, 5...).
+  function calcularPuestos(frecuencias) {
+    var puestos = [];
+    var puesto = 0;
+    for (var i = 0; i < frecuencias.length; i++) {
+      if (i === 0 || frecuencias[i].count !== frecuencias[i - 1].count) puesto = i + 1;
+      puestos.push(puesto);
+    }
+    return puestos;
+  }
+
+  function celda(clase, texto) {
+    var td = document.createElement("td");
+    if (clase) td.className = clase;
+    td.textContent = texto; // textContent (nunca innerHTML): lo que se escribe en el texto no se interpreta como código
+    return td;
+  }
+
+  function dibujar(resultado) {
+    var frecuencias = resultado.frequencies;
+    $("total-palabras").textContent = String(resultado.words);
+    $("total-caracteres").textContent = String(resultado.characters);
+    $("total-distintas").textContent = String(frecuencias.length);
+    $("salida-texto").textContent = formatReport(resultado);
+
+    var tabla = $("tabla-resultados");
+    var cuerpo = tabla.querySelector("tbody");
+    cuerpo.textContent = "";
+    $("estado-vacio").hidden = frecuencias.length > 0;
+    tabla.hidden = frecuencias.length === 0;
+    $("aviso-limite").hidden = true;
+    if (frecuencias.length === 0) return;
+
+    var puestos = calcularPuestos(frecuencias);
+    var pedido = parseInt($("cantidad-mostrar").value, 10); // 0 = todas
+    var limite = pedido > 0 ? pedido : frecuencias.length;
+    var mostrar = Math.min(limite, frecuencias.length, MAX_FILAS_VISIBLES);
+    var maximo = frecuencias[0].count;
+    var fragmento = document.createDocumentFragment();
+
+    for (var i = 0; i < mostrar; i++) {
+      var f = frecuencias[i];
+      var tr = document.createElement("tr");
+      tr.appendChild(celda("num puesto", String(puestos[i])));
+      tr.appendChild(celda("palabra", f.word));
+      tr.appendChild(celda("num veces", String(f.count)));
+      tr.appendChild(celda("num porcentaje", porcentaje(f.count, resultado.words)));
+      var tdBarra = document.createElement("td");
+      var barra = document.createElement("div");
+      barra.className = "barra";
+      var relleno = document.createElement("i");
+      relleno.style.width = Math.max(2, Math.round(f.count * 100 / maximo)) + "%";
+      barra.appendChild(relleno);
+      tdBarra.appendChild(barra);
+      tr.appendChild(tdBarra);
+      fragmento.appendChild(tr);
+    }
+    cuerpo.appendChild(fragmento);
+
+    if (mostrar < Math.min(limite, frecuencias.length)) {
+      var aviso = $("aviso-limite");
+      aviso.textContent = "Se muestran las primeras " + mostrar + " de " + frecuencias.length + " palabras distintas. La salida de texto de abajo las incluye todas.";
+      aviso.hidden = false;
+    }
+  }
+
+  function actualizar() {
+    var miTurno = ++secuencia;
+    return analyzeText($("texto").value).then(function (resultado) {
+      if (miTurno === secuencia) dibujar(resultado);
+    });
+  }
+
+  function actualizarConDemora() {
+    clearTimeout(temporizador);
+    temporizador = setTimeout(actualizar, 120);
+  }
+
+  $("texto").addEventListener("input", function () {
+    $("nombre-archivo").textContent = "";
+    actualizarConDemora();
+  });
+  $("cantidad-mostrar").addEventListener("change", actualizar);
+  $("btn-ejemplo").addEventListener("click", function () {
+    $("texto").value = EJEMPLO;
+    $("nombre-archivo").textContent = "";
+    actualizar();
+  });
+  $("btn-limpiar").addEventListener("click", function () {
+    $("texto").value = "";
+    $("nombre-archivo").textContent = "";
+    actualizar();
+  });
+  $("archivo").addEventListener("change", function (evento) {
+    var archivo = evento.target.files && evento.target.files[0];
+    if (!archivo) return;
+    // file.text() lee el archivo como UTF-8 (igual que el programa de consola).
+    archivo.text().then(function (contenido) {
+      $("texto").value = contenido;
+      $("nombre-archivo").textContent = "Archivo cargado: " + archivo.name;
+      evento.target.value = ""; // permite volver a cargar el mismo archivo
+      return actualizar();
+    });
+  });
+
+  actualizar();
+})();
+</script>
+</body>
+</html>

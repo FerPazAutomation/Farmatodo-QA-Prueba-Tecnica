@@ -1,0 +1,30 @@
+﻿AUTOSAVE label: ["\nSAVE","\nAUTO-SAVEOFF"]
+AUTOSAVE html: <button type="button" style="line-height: 0.9;" class="btn btn-default dropdown-toggle" aria-expanded="false" id="revisions-btn" data-toggle="modal" data-target="#social-login-modal"><i class="fa fa-floppy-o" style="line-height:1.1"></i> <br><span style="font-size:60%;" data-tr-detail="auto_save">AUTO-SAVE</span><span style="background-color:#c9302c; color:white;padding: 0 2px;margin-left:2px;font-size: 60%;" data-tr-detail="off">OFF</span></button>
+localStorage: [
+ "fbapc_591306824547870={\"config\":{\"fedcmDefault\":false},\"expiresAt\":1795135116828}",
+ "google_ama_config=[[[[null,0,null,[],null,null,\"DIV#kwd-density>DIV.panel-heading>.panel-title\"],1",
+ "text=texto privado de prueba"
+]
+AFTER RELOAD (same ctx): "texto privado de prueba"
+NEW CONTEXT box: ""
+A11Y: {
+ "boxAriaLabel": null,
+ "boxLabelFor": null,
+ "boxPlaceholder": "Start typing, or copy and paste your document here...",
+ "ariaLive": [
+  "wc-eg-note",
+  "wc-tc-result-view"
+ ],
+ "imgsNoAlt": 0,
+ "btnNoName": 0,
+ "lang": "en-US",
+ "title": "WordCounter - Count Words & Correct Writing",
+ "metaDesc": "Copy and paste your text into the online editor to count its words and characters, check keyword density, and correct writing mistakes. Bookmark it now, itΓÇÖs free and easy."
+}
+CONSOLE: [
+ "[error] Permissions policy violation: unload is not allowed in this document."
+]
+FAILED REQ: []
+MORE link:  More (12)
+DETAILS after More: ["3\nWords","15\nCharacters","1\nSentences","1\nParagraphs","N/A\nReading Level┬á","1 sec\nReading Time┬á","1 sec\nSpeaking Time┬á"," More (12)     Share"]
+MOBILE overflow: { sw: 390, cw: 390 }

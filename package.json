@@ -1,0 +1,31 @@
+{
+  "name": "prueba-farmatodo-qa",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Prueba técnica Ingeniero de Calidad QA - Farmatodo (puntos 1 y 4): suite automatizada de wordcounter.net y contador de frecuencia de palabras.",
+  "author": "Fernando Llanes Paz",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "playwright test",
+    "test:core": "playwright test --grep @core",
+    "test:wordcounter": "playwright test",
+    "test:algoritmo": "playwright test -c playwright.algoritmo.config.ts",
+    "test:visor": "playwright test -c playwright.visor.config.ts",
+    "test:todo": "npm run test:algoritmo && npm run test:visor && npm run test:wordcounter",
+    "frecuencia": "tsx src/word-frequency/cli.ts",
+    "visor": "tsx scripts/construir-visor.ts --abrir",
+    "visor:construir": "tsx scripts/construir-visor.ts",
+    "typecheck": "tsc --noEmit",
+    "report": "playwright show-report reports/wordcounter/playwright-html"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.1",
+    "@types/node": "^26.6.6",
+    "esbuild": "^0.28.2",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}

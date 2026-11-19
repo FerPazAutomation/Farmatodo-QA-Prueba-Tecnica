@@ -1,0 +1,79 @@
+﻿
+## empate_zeta_primero  "zeta zeta alfa alfa"
+   4 words 19 characters
+   kw(2): zeta=2 (50%) | alfa=2 (50%)
+
+## empate_alfa_primero  "alfa alfa zeta zeta"
+   4 words 19 characters
+   kw(2): alfa=2 (50%) | zeta=2 (50%)
+
+## empate_tres_vs_dos  "tres tres dos dos uno"
+   5 words 21 characters
+   kw(3): tres=2 (40%) | dos=2 (40%) | uno=1 (20%)
+
+## barra  "a/b word/word si/no"
+   6 words 19 characters
+   kw(2): word=2 (67%) | si=1 (33%)
+
+## coma_miles  "1,000 3.14 hola"
+   3 words 15 characters
+   kw(1): hola=1 (100%)
+
+## guion_medio  "e-mail perro-gato"
+   2 words 17 characters
+   kw(2): e-mail=1 (50%) | perro-gato=1 (50%)
+
+## parentesis_comillas  "(hola) \"hola\" 'hola' hola"
+   4 words 25 characters
+   kw(1): hola=4 (100%)
+
+## raya_larga  "holaΓÇömundo holaΓÇömundo"
+   4 words 21 characters
+   kw(2): hola=2 (50%) | mundo=2 (50%)
+
+## puntos_suspensivos  "hola...mundo hola...mundo"
+   4 words 25 characters
+   kw(2): hola=2 (50%) | mundo=2 (50%)
+
+## guion_bajo  "hola_mundo hola_mundo"
+   4 words 21 characters
+   kw(2): hola=2 (50%) | mundo=2 (50%)
+
+## alfanumerico  "abc123 abc123 xyz"
+   3 words 17 characters
+   kw(2): abc123=2 (67%) | xyz=1 (33%)
+
+## doce_unicas  "uno dos tres cuatro cinco seis siete ocho nueve diez once doce trece catorce"
+   14 words 76 characters
+   kw(10): uno=1 (7%) | dos=1 (7%) | tres=1 (7%) | cuatro=1 (7%) | cinco=1 (7%) | seis=1 (7%) | siete=1 (7%) | ocho=1 (7%) | nueve=1 (7%) | diez=1 (7%)
+
+## no_latino  "πüôπéôπü½πüíπü» Σ╕ûτòî πüôπéôπü½πüíπü»"
+   3 words 14 characters
+   kw(2): πüôπéôπü½πüíπü»=2 (67%) | Σ╕ûτòî=1 (33%)
+
+## dos_letras  "ok ok si si no"
+   5 words 14 characters
+   kw(1): si=2 (100%)
+
+## mayus_acentos  "Canci├│n cancion CANCI├ôN"
+   3 words 23 characters
+   kw(2): canci├│n=2 (67%) | cancion=1 (33%)
+
+## nbsp  "hola┬ámundo hola┬ámundo"
+   4 words 21 characters
+   kw(1): hola┬ámundo=2 (100%)
+
+## TYPED 'hola mundo hola' {
+  h1: '3 words 15 characters',
+  kw: [ 'hola=2 (67%)', 'mundo=1 (33%)' ]
+}
+## AFTER CLEAR { h1: '0 words 0 characters', kw: [ '=' ] } box= ""
+## AFTER UNDO {
+  h1: '3 words 15 characters',
+  kw: [ 'hola=2 (67%)', 'mundo=1 (33%)' ]
+} box= "hola mundo hola"
+
+## BIG 20000 words 154 ms {
+  h1: '20,000 words 109,999 characters',
+  kw: [ 'perro=10000 (50%)', 'gato=10000 (50%)' ]
+} word_count el: 20,000 char_count el: 109,999

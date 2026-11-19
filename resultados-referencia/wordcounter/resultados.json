@@ -1,0 +1,401 @@
+{
+  "title": "Suite automatizada de wordcounter.net",
+  "subtitle": "Prueba técnica Farmatodo · Punto 1",
+  "startedAt": "2026-11-19T20:18:39.094Z",
+  "finishedAt": "2026-11-19T20:21:58.994Z",
+  "durationSeconds": 199.9,
+  "runStatus": "failed",
+  "node": "v26.2.0",
+  "totals": {
+    "executed": 30,
+    "passed": 21,
+    "failed": 9,
+    "skipped": 0
+  },
+  "rows": [
+    {
+      "id": "ED-01",
+      "title": "Un emoji cuenta como 1 carácter",
+      "category": "hallazgo",
+      "description": "Una persona ve el emoji 😀 como un solo carácter. Si el sitio lo cuenta como dos, el total de caracteres no coincide con lo que se ve (importa si hay límites de caracteres, como un SMS o un campo con máximo).",
+      "input": "\"hola 😀 hola 😀 mundo\"",
+      "finding": "BUG-002 [Desktop] Cada emoji cuenta como 2 caracteres",
+      "status": "failed",
+      "durationMs": 16814,
+      "retried": false,
+      "errors": [
+        "Número de caracteres de \"hola 😀 hola 😀 mundo\". Se esperaba «19» y el sitio mostró «21»."
+      ],
+      "evidence": "evidencias/BUG-002 [Desktop] Cada emoji cuenta como 2 caracteres - ED-01.png"
+    },
+    {
+      "id": "ED-02",
+      "title": "Palabras unidas por espacio de no separación (NBSP)",
+      "category": "hallazgo",
+      "description": "Este espacio invisible aparece al copiar desde páginas web o Word. El contador de palabras y la lista de Keyword Density tienen que usar la misma regla, y hoy no la usan.",
+      "input": "\"hola mundo hola mundo\"",
+      "finding": "BUG-003 [Desktop] Words y Keyword Density cuentan distinto con espacio invisible",
+      "status": "failed",
+      "durationMs": 16147,
+      "retried": false,
+      "errors": [
+        "Top 3 palabras más repetidas (Keyword Density) de \"hola mundo hola mundo\". Diferencias: cantidad de palabras en el top: se esperaban 2 (ej. «hola» ×2, «mundo» ×2) y el sitio listó 1 («hola mundo» ×2) | posición 1: el sitio muestra «hola mundo», que no es una palabra del texto tal como se esperaba."
+      ],
+      "evidence": "evidencias/BUG-003 [Desktop] Words y Keyword Density cuentan distinto con espacio invisible - ED-02.png"
+    },
+    {
+      "id": "ED-03",
+      "title": "Los números también son palabras repetidas",
+      "category": "hallazgo",
+      "description": "El contador de palabras suma los números, pero Keyword Density los esconde. Si un número se repite mucho (por ejemplo un precio o un código), no aparece en el top.",
+      "input": "\"123 123 456 hola\"",
+      "finding": "BUG-004 [Desktop] Keyword Density omite números, letras sueltas y palabras comunes en inglés",
+      "status": "failed",
+      "durationMs": 17186,
+      "retried": false,
+      "errors": [
+        "Top 3 palabras más repetidas (Keyword Density) de \"123 123 456 hola\". Diferencias: cantidad de palabras en el top: se esperaban 3 (ej. «123» ×2, «456» ×1, «hola» ×1) y el sitio listó 1 («hola» ×1) | posición 1: se esperaba una palabra con 2 repeticiones y el sitio muestra «hola» con 1."
+      ],
+      "evidence": "evidencias/BUG-004 [Desktop] Keyword Density omite números, letras sueltas y palabras comunes en inglés - ED-03.png"
+    },
+    {
+      "id": "ED-04",
+      "title": "Las letras sueltas también son palabras repetidas",
+      "category": "hallazgo",
+      "description": "Mismo problema: letras sueltas como «b» o «c» se cuentan como palabras pero no aparecen en Keyword Density.",
+      "input": "\"b a c b a c d\"",
+      "finding": "BUG-004 [Desktop] Keyword Density omite números, letras sueltas y palabras comunes en inglés",
+      "status": "failed",
+      "durationMs": 16458,
+      "retried": false,
+      "errors": [
+        "Top 3 palabras más repetidas (Keyword Density) de \"b a c b a c d\". Diferencias: cantidad de palabras en el top: se esperaban 3 (ej. «b» ×2, «a» ×2, «c» ×2) y el sitio listó 0 (ninguna)."
+      ],
+      "evidence": "evidencias/BUG-004 [Desktop] Keyword Density omite números, letras sueltas y palabras comunes en inglés - ED-04.png"
+    },
+    {
+      "id": "ED-05",
+      "title": "Palabras comunes en inglés (the, and)",
+      "category": "hallazgo",
+      "description": "El sitio esconde palabras como «the» y «and» de la lista, sin avisarlo. La prueba pide las 3 palabras más repetidas, y «the» es la más repetida de este texto.",
+      "input": "\"the cat and the dog and the bird\"",
+      "finding": "BUG-004 [Desktop] Keyword Density omite números, letras sueltas y palabras comunes en inglés",
+      "status": "failed",
+      "durationMs": 18676,
+      "retried": false,
+      "errors": [
+        "Top 3 palabras más repetidas (Keyword Density) de \"the cat and the dog and the bird\". Diferencias: posición 1: se esperaba una palabra con 3 repeticiones y el sitio muestra «cat» con 1 | posición 2: se esperaba una palabra con 2 repeticiones y el sitio muestra «dog» con 1."
+      ],
+      "evidence": "evidencias/BUG-004 [Desktop] Keyword Density omite números, letras sueltas y palabras comunes en inglés - ED-05.png"
+    },
+    {
+      "id": "ED-06",
+      "title": "Un link y un email cuentan como una palabra cada uno",
+      "category": "hallazgo",
+      "description": "Pegar una dirección web o un email es muy común. Entre espacios son dos bloques de texto, pero el sitio los parte en pedazos y cuenta 3 palabras.",
+      "input": "\"https://farmatodo.com info@farmatodo.com\"",
+      "finding": "BUG-005 [Desktop] Parte palabras en guion bajo, barras y direcciones web",
+      "status": "failed",
+      "durationMs": 28503,
+      "retried": false,
+      "errors": [
+        "Número de palabras de \"https://farmatodo.com info@farmatodo.com\". Se esperaba «2» y el sitio mostró «3».",
+        "Top 3 palabras más repetidas (Keyword Density) de \"https://farmatodo.com info@farmatodo.com\". Diferencias: cantidad de palabras en el top: se esperaban 2 (ej. «https://farmatodo.com» ×1, «info@farmatodo.com» ×1) y el sitio listó 3 («farmatodo» ×2, «com» ×2, «https» ×1) | posición 1: el sitio muestra «farmatodo», que no es una palabra del texto tal como se esperaba | posición 1: se esperaba una palabra con 1 repeticiones y el sitio muestra «farmatodo» con 2 | posición 2: el sitio muestra «com», que no es una palabra del texto tal como se esperaba | posición 2: se esperaba una palabra con 1 repeticiones y el sitio muestra «com» con 2 | posición 3: el sitio muestra «https», que no es una palabra del texto tal como se esperaba."
+      ],
+      "evidence": "evidencias/BUG-005 [Desktop] Parte palabras en guion bajo, barras y direcciones web - ED-06.png"
+    },
+    {
+      "id": "ED-07",
+      "title": "Palabras unidas con guion bajo (hola_mundo)",
+      "category": "hallazgo",
+      "description": "Un nombre como «hola_mundo» (usuarios, archivos) se ve como una palabra; el sitio la parte en dos.",
+      "input": "\"hola_mundo hola_mundo\"",
+      "finding": "BUG-005 [Desktop] Parte palabras en guion bajo, barras y direcciones web",
+      "status": "failed",
+      "durationMs": 24818,
+      "retried": false,
+      "errors": [
+        "Número de palabras de \"hola_mundo hola_mundo\". Se esperaba «2» y el sitio mostró «4».",
+        "Top 3 palabras más repetidas (Keyword Density) de \"hola_mundo hola_mundo\". Diferencias: cantidad de palabras en el top: se esperaban 1 (ej. «hola_mundo» ×2) y el sitio listó 2 («hola» ×2, «mundo» ×2) | posición 1: el sitio muestra «hola», que no es una palabra del texto tal como se esperaba | posición 2: el sitio muestra «mundo», que no es una palabra del texto tal como se esperaba."
+      ],
+      "evidence": "evidencias/BUG-005 [Desktop] Parte palabras en guion bajo, barras y direcciones web - ED-07.png"
+    },
+    {
+      "id": "ED-08",
+      "title": "Palabras unidas con barra (mañana/tarde)",
+      "category": "hallazgo",
+      "description": "Escrituras como «mañana/tarde» o «y/o» se usan mucho en textos de farmacia (posología). Se ven como un bloque, el sitio cuenta dos.",
+      "input": "\"mañana/tarde mañana/tarde\"",
+      "finding": "BUG-005 [Desktop] Parte palabras en guion bajo, barras y direcciones web",
+      "status": "failed",
+      "durationMs": 16940,
+      "retried": false,
+      "errors": [
+        "Top 3 palabras más repetidas (Keyword Density) de \"mañana/tarde mañana/tarde\". Diferencias: cantidad de palabras en el top: se esperaban 1 (ej. «mañana/tarde» ×2) y el sitio listó 2 («mañana» ×2, «tarde» ×2) | posición 1: el sitio muestra «mañana», que no es una palabra del texto tal como se esperaba | posición 2: el sitio muestra «tarde», que no es una palabra del texto tal como se esperaba."
+      ],
+      "evidence": "evidencias/BUG-005 [Desktop] Parte palabras en guion bajo, barras y direcciones web - ED-08.png"
+    },
+    {
+      "id": "ED-09",
+      "title": "Con AUTO-SAVE en OFF el texto no debería quedar guardado al recargar",
+      "category": "hallazgo",
+      "description": "El botón dice «AUTO-SAVE OFF» (apagado). Si cierro o recargo la página, lo razonable es empezar con el editor vacío. Si el texto vuelve, el sitio lo guardó igual en este navegador. Es un tema de coherencia y de privacidad en computadoras compartidas.",
+      "input": "\"texto privado de prueba\"",
+      "finding": "BUG-001 [Desktop] Con AUTO-SAVE en OFF el texto se guarda igual",
+      "status": "failed",
+      "durationMs": 14916,
+      "retried": false,
+      "errors": [
+        "Contenido del editor después de recargar con AUTO-SAVE en OFF. Diferencias: texto privado de prueba."
+      ],
+      "evidence": "evidencias/BUG-001 [Desktop] Con AUTO-SAVE en OFF el texto se guarda igual - ED-09.png"
+    },
+    {
+      "id": "OB-01",
+      "title": "Cuando hay empate, el sitio ordena por orden de aparición (no alfabético)",
+      "category": "observacion",
+      "description": "Documento cómo desempata el sitio: la palabra que aparece primero en el texto va primero en la lista. No es alfabético. Lo dejo como prueba para que, si algún día cambia, nos enteremos. Por eso mis pruebas de top 3 no exigen un orden dentro de un empate.",
+      "status": "passed",
+      "durationMs": 5711,
+      "retried": false,
+      "errors": [],
+      "evidence": "evidencias/OB-01-OK.png"
+    },
+    {
+      "id": "OB-02",
+      "title": "Keyword Density lista como máximo 10 palabras",
+      "category": "observacion",
+      "description": "La propia página dice que muestra las 10 palabras clave principales. Con 14 palabras distintas, la lista tiene exactamente 10. De ahí salen las 3 más repetidas.",
+      "status": "passed",
+      "durationMs": 4036,
+      "retried": false,
+      "errors": [],
+      "evidence": "evidencias/OB-02-OK.png"
+    },
+    {
+      "id": "SC-01",
+      "title": "El texto de ejemplo del enunciado",
+      "category": "core",
+      "description": "Uso exactamente el texto que trae la prueba. El enunciado ya dice que debe dar 14 palabras y 99 caracteres, así que sirve como referencia oficial.",
+      "input": "\"farmatodo farmatodo farmatodo farmatodo farmatodo cuida cuida tu salud\\nfarmatodo cuida toda tu salud\"",
+      "status": "passed",
+      "durationMs": 7389,
+      "retried": false,
+      "errors": [],
+      "evidence": "evidencias/SC-01-OK.png"
+    },
+    {
+      "id": "SC-02",
+      "title": "Una sola palabra",
+      "category": "core",
+      "description": "El caso más chico posible. Verifica que el sitio no se rompa con un solo dato y que escriba bien el singular.",
+      "input": "\"hola\"",
+      "status": "passed",
+      "durationMs": 6044,
+      "retried": false,
+      "errors": [],
+      "evidence": "evidencias/SC-02-OK.png"
+    },
+    {
+      "id": "SC-03",
+      "title": "Mayúsculas y minúsculas cuentan como la misma palabra",
+      "category": "core",
+      "description": "«Hola», «hola» y «HOLA» son la misma palabra para una persona. El sitio tiene que sumarlas juntas.",
+      "input": "\"Hola hola HOLA mundo\"",
+      "status": "passed",
+      "durationMs": 6257,
+      "retried": false,
+      "errors": [],
+      "evidence": "evidencias/SC-03-OK.png"
+    },
+    {
+      "id": "SC-04",
+      "title": "Signos de puntuación pegados a la palabra",
+      "category": "core",
+      "description": "En un texto real las palabras vienen con comas, puntos y signos pegados. «Hola,» y «hola.» deben contarse como «hola».",
+      "input": "\"Hola, hola. hola! mundo?\"",
+      "status": "passed",
+      "durationMs": 6243,
+      "retried": false,
+      "errors": [],
+      "evidence": "evidencias/SC-04-OK.png"
+    },
+    {
+      "id": "SC-05",
+      "title": "Espacios repetidos entre palabras",
+      "category": "core",
+      "description": "Cuando alguien pone varios espacios seguidos no aparecen palabras fantasma, pero los espacios sí cuentan como caracteres.",
+      "input": "\"uno   dos    tres\"",
+      "status": "passed",
+      "durationMs": 5702,
+      "retried": false,
+      "errors": [],
+      "evidence": "evidencias/SC-05-OK.png"
+    },
+    {
+      "id": "SC-06",
+      "title": "Espacios al principio y al final del texto",
+      "category": "core",
+      "description": "Los espacios de los bordes no son palabras, pero sí son caracteres.",
+      "input": "\"   hola mundo   \"",
+      "status": "passed",
+      "durationMs": 5706,
+      "retried": false,
+      "errors": [],
+      "evidence": "evidencias/SC-06-OK.png"
+    },
+    {
+      "id": "SC-07",
+      "title": "Los saltos de línea no cuentan como caracteres",
+      "category": "core",
+      "description": "Las reglas de la prueba dicen que los saltos de línea no se cuentan. Además un salto de línea separa palabras, aunque no haya espacio.",
+      "input": "\"uno\\ndos\\n\\ntres\"",
+      "status": "passed",
+      "durationMs": 6438,
+      "retried": false,
+      "errors": [],
+      "evidence": "evidencias/SC-07-OK.png"
+    },
+    {
+      "id": "SC-08",
+      "title": "Tildes y la letra ñ",
+      "category": "core",
+      "description": "Farmatodo es una marca en español. Verifico que «canción», «niño» y «árbol» se lean completas y se cuenten bien.",
+      "input": "\"canción canción niño niño árbol\"",
+      "status": "passed",
+      "durationMs": 5534,
+      "retried": false,
+      "errors": [],
+      "evidence": "evidencias/SC-08-OK.png"
+    },
+    {
+      "id": "SC-09",
+      "title": "Top 3 claro, sin empates",
+      "category": "core",
+      "description": "Cuatro palabras con repeticiones distintas (4, 3, 2 y 1). El top 3 tiene que dejar afuera a la que aparece una sola vez y mostrar los porcentajes correctos.",
+      "input": "\"perro perro perro perro gato gato gato casa casa lobo\"",
+      "status": "passed",
+      "durationMs": 5183,
+      "retried": false,
+      "errors": [],
+      "evidence": "evidencias/SC-09-OK.png"
+    },
+    {
+      "id": "SC-10",
+      "title": "Empate en el tercer lugar",
+      "category": "core",
+      "description": "«dos» y «tres» aparecen 2 veces cada una y pelean por el segundo y tercer puesto. La prueba no exige un orden dentro del empate: pido que el conteo sea correcto.",
+      "input": "\"uno uno uno dos dos tres tres cuatro\"",
+      "status": "passed",
+      "durationMs": 5094,
+      "retried": false,
+      "errors": [],
+      "evidence": "evidencias/SC-10-OK.png"
+    },
+    {
+      "id": "SC-11",
+      "title": "Palabra con guion interno es una sola palabra",
+      "category": "core",
+      "description": "«e-mail» y «perro-gato» son una palabra cada una, no dos. Es la forma habitual de contar en un procesador de texto.",
+      "input": "\"e-mail perro-gato e-mail\"",
+      "status": "passed",
+      "durationMs": 5375,
+      "retried": false,
+      "errors": [],
+      "evidence": "evidencias/SC-11-OK.png"
+    },
+    {
+      "id": "SC-12",
+      "title": "Palabras con letras y números juntos",
+      "category": "core",
+      "description": "Códigos como «abc123» (muy comunes en una farmacia: lotes, SKU) se tratan como una palabra.",
+      "input": "\"abc123 abc123 xyz\"",
+      "status": "passed",
+      "durationMs": 5356,
+      "retried": false,
+      "errors": [],
+      "evidence": "evidencias/SC-12-OK.png"
+    },
+    {
+      "id": "SC-13",
+      "title": "Escribir tecla por tecla y borrar todo actualiza los contadores",
+      "category": "core",
+      "description": "Una persona escribe letra por letra, no pega todo junto. Verifico que los números se actualicen al escribir y vuelvan a cero al borrar todo el texto.",
+      "input": "\"hola mundo hola\"",
+      "status": "passed",
+      "durationMs": 8427,
+      "retried": false,
+      "errors": [],
+      "evidence": "evidencias/SC-13-OK.png"
+    },
+    {
+      "id": "SC-14",
+      "title": "Un texto largo (20.000 palabras) se cuenta bien y usa separador de miles",
+      "category": "core",
+      "description": "Un documento real puede ser largo. Verifico que el sitio cuente 20.000 palabras sin errores y que escriba los números grandes con coma (20,000), como se muestra en pantalla.",
+      "status": "passed",
+      "durationMs": 16752,
+      "retried": false,
+      "errors": [],
+      "evidence": "evidencias/SC-14-OK.png"
+    },
+    {
+      "id": "SC-15",
+      "title": "El botón Clear deja todo en cero",
+      "category": "core",
+      "description": "Después de limpiar, el editor queda vacío, los totales vuelven a 0 y Keyword Density no muestra palabras viejas.",
+      "status": "passed",
+      "durationMs": 15115,
+      "retried": false,
+      "errors": [],
+      "evidence": "evidencias/SC-15-OK.png"
+    },
+    {
+      "id": "SC-16",
+      "title": "El total es el mismo en los tres lugares donde se muestra",
+      "category": "core",
+      "description": "Los totales aparecen en el título grande, en la barra debajo del editor y en el panel «Details». Los tres tienen que decir lo mismo y escribir bien el singular («1 word»).",
+      "input": "\"farmatodo farmatodo farmatodo farmatodo farmatodo cuida cuida tu salud\\nfarmatodo cuida toda tu salud\"",
+      "status": "passed",
+      "durationMs": 6563,
+      "retried": false,
+      "errors": [],
+      "evidence": "evidencias/SC-16-OK.png"
+    },
+    {
+      "id": "SC-17",
+      "title": "Pegar un texto desde el portapapeles (Ctrl+V) se cuenta igual que escribirlo",
+      "category": "core",
+      "description": "El propio sitio invita a «copiar y pegar tu documento». Copio el texto del enunciado al portapapeles y lo pego con Ctrl+V como lo haría una persona.",
+      "input": "\"farmatodo farmatodo farmatodo farmatodo farmatodo cuida cuida tu salud\\nfarmatodo cuida toda tu salud\"",
+      "status": "passed",
+      "durationMs": 6742,
+      "retried": false,
+      "errors": [],
+      "evidence": "evidencias/SC-17-OK.png"
+    },
+    {
+      "id": "SC-18",
+      "title": "El sitio y el algoritmo del punto 4 coinciden en un párrafo real",
+      "category": "core",
+      "description": "Verificación cruzada: se calcula el resultado esperado con el algoritmo del punto 4 y se compara con lo que muestra el sitio para un párrafo en español.",
+      "input": "\"Farmatodo cuida tu salud. En Farmatodo encontras medicamentos, vitaminas y productos de cuidado personal. Cuida tu salud con Farmatodo y cuida a tu familia. Tu salud es lo primero.\"",
+      "status": "passed",
+      "durationMs": 5475,
+      "retried": false,
+      "errors": [],
+      "evidence": "evidencias/SC-18-OK.png"
+    },
+    {
+      "id": "SC-19",
+      "title": "Estado inicial con la configuración por defecto",
+      "category": "core",
+      "description": "Antes de escribir nada, el sitio muestra todo en cero, la lista de palabras sugiere empezar a escribir, está activa la vista «x1» (palabras sueltas) y el guardado automático está apagado. Esta es la configuración que uso en todas las pruebas, sin cambiar nada.",
+      "status": "passed",
+      "durationMs": 4936,
+      "retried": false,
+      "errors": [],
+      "evidence": "evidencias/SC-19-OK.png"
+    }
+  ]
+}

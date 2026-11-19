@@ -1,0 +1,387 @@
+{
+  "title": "Pruebas del algoritmo de frecuencia de palabras",
+  "subtitle": "Prueba técnica Farmatodo · Punto 4",
+  "startedAt": "2026-11-19T20:29:50.483Z",
+  "finishedAt": "2026-11-19T20:29:54.303Z",
+  "durationSeconds": 3.8,
+  "runStatus": "passed",
+  "node": "v26.2.0",
+  "totals": {
+    "executed": 37,
+    "passed": 37,
+    "failed": 0,
+    "skipped": 0
+  },
+  "rows": [
+    {
+      "id": "AL-01",
+      "title": "Produce exactamente la salida del ejemplo del enunciado",
+      "category": "core",
+      "description": "Es el ejemplo oficial de la prueba: 14 palabras, 99 caracteres y el histograma ordenado.",
+      "status": "passed",
+      "durationMs": 5,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "AL-02",
+      "title": "Empate de frecuencia se ordena alfabéticamente",
+      "category": "core",
+      "description": "«salud» y «tu» aparecen 2 veces: salud va primero porque la 's' viene antes que la 't'.",
+      "status": "passed",
+      "durationMs": 6,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "AL-03",
+      "title": "Ordena por frecuencia descendente aunque el texto venga desordenado",
+      "category": "core",
+      "description": "La palabra más repetida siempre va primero, sin importar dónde aparezca.",
+      "status": "passed",
+      "durationMs": 5,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "AL-04",
+      "title": "Mayúsculas y minúsculas son la misma palabra",
+      "category": "core",
+      "description": "«Hola», «hola» y «HOLA» suman 3 repeticiones de «hola».",
+      "status": "passed",
+      "durationMs": 5,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "AL-05",
+      "title": "Ignora la puntuación en los bordes pero conserva la interna",
+      "category": "core",
+      "description": "«Hola,» y «hola.» son «hola»; «e-mail» sigue siendo una sola palabra.",
+      "status": "passed",
+      "durationMs": 10,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "AL-06",
+      "title": "Tildes y ñ se conservan y se ordenan en español",
+      "category": "core",
+      "description": "«canción», «niño» y «árbol» no pierden letras, y el orden alfabético respeta el español (árbol antes que casa).",
+      "status": "passed",
+      "durationMs": 4,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "AL-07",
+      "title": "Cuenta los espacios y no cuenta los saltos de línea (\\n y \\r\\n)",
+      "category": "core",
+      "description": "Regla de la prueba: caracteres incluyen espacios pero no saltos de línea. Funciona igual con archivos de Windows (CRLF) y de Linux/Mac.",
+      "status": "passed",
+      "durationMs": 5,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "AL-08",
+      "title": "Un emoji cuenta como 1 carácter",
+      "category": "core",
+      "description": "Caracteres = lo que una persona ve. Un emoji (😀) es un carácter, no dos.",
+      "status": "passed",
+      "durationMs": 5,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "AL-09",
+      "title": "Archivo vacío: 0 palabras, 0 caracteres y sin histograma",
+      "category": "core",
+      "description": "Un archivo vacío no es un error: el resultado es cero.",
+      "status": "passed",
+      "durationMs": 6,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "AL-10",
+      "title": "Solo símbolos no cuenta como palabras",
+      "category": "core",
+      "description": "«!!! ???» son 11 caracteres pero ninguna palabra.",
+      "status": "passed",
+      "durationMs": 6,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "AL-11",
+      "title": "Singular correcto: «1 word» y «1 character»",
+      "category": "core",
+      "description": "La salida no dice «1 words».",
+      "status": "passed",
+      "durationMs": 3,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "AL-12",
+      "title": "Lee un archivo real de disco (UTF-8, con BOM y sin salto final)",
+      "category": "core",
+      "description": "Prueba de punta a punta con un archivo .txt. El BOM (marca invisible de algunos editores de Windows) no cuenta como carácter.",
+      "status": "passed",
+      "durationMs": 48,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "AL-13",
+      "title": "Un archivo que no existe da un mensaje claro y código de salida 1",
+      "category": "core",
+      "description": "Si el usuario se equivoca de nombre, el programa avisa en castellano y no muestra un error técnico.",
+      "status": "passed",
+      "durationMs": 363,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "AL-14",
+      "title": "La opción --bars agrega un histograma visual proporcional",
+      "category": "core",
+      "description": "La palabra más repetida tiene la barra más larga y las demás son proporcionales.",
+      "status": "passed",
+      "durationMs": 5,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "AL-15",
+      "title": "Rendimiento: 1.000.000 de palabras en menos de 3 segundos",
+      "category": "core",
+      "description": "Evidencia de que el algoritmo es lineal: un millón de palabras se procesa en una fracción de segundo.",
+      "status": "passed",
+      "durationMs": 1217,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "AL-16",
+      "title": "Un emoji suelto cuenta como palabra y se agrupa con los iguales",
+      "category": "core",
+      "description": "Igual que el sitio de la prueba: «hola 😀 hola 😀» son 4 palabras y el emoji se repite 2 veces. En el desempate alfabético los símbolos van antes que las letras.",
+      "status": "passed",
+      "durationMs": 5,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "AL-17",
+      "title": "Una tilde escrita en dos formas cuenta como la misma palabra",
+      "category": "core",
+      "description": "«canción» con la ñ/tilde precompuesta y «cancio» + acento combinado (dos códigos distintos, misma palabra para una persona) suman 2 repeticiones, no 2 palabras distintas.",
+      "status": "passed",
+      "durationMs": 7,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "XV-ED-01",
+      "title": "Un emoji cuenta como 1 carácter",
+      "category": "core",
+      "description": "Se comprueba que lo que se espera del sitio en ED-01 (palabras, caracteres y frecuencias) coincide con lo que calcula el algoritmo del punto 4.",
+      "status": "passed",
+      "durationMs": 20,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "XV-ED-02",
+      "title": "Palabras unidas por espacio de no separación (NBSP)",
+      "category": "core",
+      "description": "Se comprueba que lo que se espera del sitio en ED-02 (palabras, caracteres y frecuencias) coincide con lo que calcula el algoritmo del punto 4.",
+      "status": "passed",
+      "durationMs": 12,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "XV-ED-03",
+      "title": "Los números también son palabras repetidas",
+      "category": "core",
+      "description": "Se comprueba que lo que se espera del sitio en ED-03 (palabras, caracteres y frecuencias) coincide con lo que calcula el algoritmo del punto 4.",
+      "status": "passed",
+      "durationMs": 7,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "XV-ED-04",
+      "title": "Las letras sueltas también son palabras repetidas",
+      "category": "core",
+      "description": "Se comprueba que lo que se espera del sitio en ED-04 (palabras, caracteres y frecuencias) coincide con lo que calcula el algoritmo del punto 4.",
+      "status": "passed",
+      "durationMs": 7,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "XV-ED-05",
+      "title": "Palabras comunes en inglés (the, and)",
+      "category": "core",
+      "description": "Se comprueba que lo que se espera del sitio en ED-05 (palabras, caracteres y frecuencias) coincide con lo que calcula el algoritmo del punto 4.",
+      "status": "passed",
+      "durationMs": 6,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "XV-ED-06",
+      "title": "Un link y un email cuentan como una palabra cada uno",
+      "category": "core",
+      "description": "Se comprueba que lo que se espera del sitio en ED-06 (palabras, caracteres y frecuencias) coincide con lo que calcula el algoritmo del punto 4.",
+      "status": "passed",
+      "durationMs": 6,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "XV-ED-07",
+      "title": "Palabras unidas con guion bajo (hola_mundo)",
+      "category": "core",
+      "description": "Se comprueba que lo que se espera del sitio en ED-07 (palabras, caracteres y frecuencias) coincide con lo que calcula el algoritmo del punto 4.",
+      "status": "passed",
+      "durationMs": 9,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "XV-ED-08",
+      "title": "Palabras unidas con barra (mañana/tarde)",
+      "category": "core",
+      "description": "Se comprueba que lo que se espera del sitio en ED-08 (palabras, caracteres y frecuencias) coincide con lo que calcula el algoritmo del punto 4.",
+      "status": "passed",
+      "durationMs": 6,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "XV-SC-01",
+      "title": "El texto de ejemplo del enunciado",
+      "category": "core",
+      "description": "Se comprueba que lo que se espera del sitio en SC-01 (palabras, caracteres y frecuencias) coincide con lo que calcula el algoritmo del punto 4.",
+      "status": "passed",
+      "durationMs": 35,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "XV-SC-02",
+      "title": "Una sola palabra",
+      "category": "core",
+      "description": "Se comprueba que lo que se espera del sitio en SC-02 (palabras, caracteres y frecuencias) coincide con lo que calcula el algoritmo del punto 4.",
+      "status": "passed",
+      "durationMs": 41,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "XV-SC-03",
+      "title": "Mayúsculas y minúsculas cuentan como la misma palabra",
+      "category": "core",
+      "description": "Se comprueba que lo que se espera del sitio en SC-03 (palabras, caracteres y frecuencias) coincide con lo que calcula el algoritmo del punto 4.",
+      "status": "passed",
+      "durationMs": 48,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "XV-SC-04",
+      "title": "Signos de puntuación pegados a la palabra",
+      "category": "core",
+      "description": "Se comprueba que lo que se espera del sitio en SC-04 (palabras, caracteres y frecuencias) coincide con lo que calcula el algoritmo del punto 4.",
+      "status": "passed",
+      "durationMs": 46,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "XV-SC-05",
+      "title": "Espacios repetidos entre palabras",
+      "category": "core",
+      "description": "Se comprueba que lo que se espera del sitio en SC-05 (palabras, caracteres y frecuencias) coincide con lo que calcula el algoritmo del punto 4.",
+      "status": "passed",
+      "durationMs": 8,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "XV-SC-06",
+      "title": "Espacios al principio y al final del texto",
+      "category": "core",
+      "description": "Se comprueba que lo que se espera del sitio en SC-06 (palabras, caracteres y frecuencias) coincide con lo que calcula el algoritmo del punto 4.",
+      "status": "passed",
+      "durationMs": 7,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "XV-SC-07",
+      "title": "Los saltos de línea no cuentan como caracteres",
+      "category": "core",
+      "description": "Se comprueba que lo que se espera del sitio en SC-07 (palabras, caracteres y frecuencias) coincide con lo que calcula el algoritmo del punto 4.",
+      "status": "passed",
+      "durationMs": 6,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "XV-SC-08",
+      "title": "Tildes y la letra ñ",
+      "category": "core",
+      "description": "Se comprueba que lo que se espera del sitio en SC-08 (palabras, caracteres y frecuencias) coincide con lo que calcula el algoritmo del punto 4.",
+      "status": "passed",
+      "durationMs": 10,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "XV-SC-09",
+      "title": "Top 3 claro, sin empates",
+      "category": "core",
+      "description": "Se comprueba que lo que se espera del sitio en SC-09 (palabras, caracteres y frecuencias) coincide con lo que calcula el algoritmo del punto 4.",
+      "status": "passed",
+      "durationMs": 9,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "XV-SC-10",
+      "title": "Empate en el tercer lugar",
+      "category": "core",
+      "description": "Se comprueba que lo que se espera del sitio en SC-10 (palabras, caracteres y frecuencias) coincide con lo que calcula el algoritmo del punto 4.",
+      "status": "passed",
+      "durationMs": 8,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "XV-SC-11",
+      "title": "Palabra con guion interno es una sola palabra",
+      "category": "core",
+      "description": "Se comprueba que lo que se espera del sitio en SC-11 (palabras, caracteres y frecuencias) coincide con lo que calcula el algoritmo del punto 4.",
+      "status": "passed",
+      "durationMs": 6,
+      "retried": false,
+      "errors": []
+    },
+    {
+      "id": "XV-SC-12",
+      "title": "Palabras con letras y números juntos",
+      "category": "core",
+      "description": "Se comprueba que lo que se espera del sitio en SC-12 (palabras, caracteres y frecuencias) coincide con lo que calcula el algoritmo del punto 4.",
+      "status": "passed",
+      "durationMs": 8,
+      "retried": false,
+      "errors": []
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suite automatizada de wordcounter.net</title>
+<style>
+  body{font-family:Segoe UI,Arial,sans-serif;margin:0;background:#f5f6f8;color:#1c2330}
+  header{background:#0b5ed7;color:#fff;padding:24px 32px}
+  header h1{margin:0 0 4px;font-size:24px} header p{margin:0;opacity:.9}
+  main{max-width:1100px;margin:0 auto;padding:24px}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+  .kpi{background:#fff;border-radius:10px;padding:16px;text-align:center;box-shadow:0 1px 3px #0002}
+  .kpi b{display:block;font-size:34px} .kpi.ok b{color:#198754} .kpi.ko b{color:#c62828}
+  table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 3px #0002}
+  th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #eee;font-size:14px} th{background:#eef1f6}
+  .b{padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600;color:#fff}
+  /* Los colores de fondo van solo en la etiqueta (.b): las tarjetas de arriba (.kpi) usan .ok/.ko solo para el color del número. */
+  .b.ok{background:#198754}.b.ko{background:#c62828}.b.sk{background:#6c757d}
+  .card{background:#fff;border-left:5px solid #c62828;border-radius:8px;padding:8px 20px 16px;margin:16px 0;box-shadow:0 1px 3px #0002}
+  .card img{max-width:100%;border:1px solid #ddd;border-radius:6px} code{background:#f0f0f0;padding:1px 6px;border-radius:4px}
+  .help{background:#fff8e1;border:1px solid #ffe08a;border-radius:8px;padding:12px 16px;margin:0 0 24px;font-size:14px}
+  @media(max-width:700px){.kpis{grid-template-columns:repeat(2,1fr)}}
+</style></head><body>
+<header><h1>Suite automatizada de wordcounter.net</h1><p>Prueba técnica Farmatodo · Punto 1 · Ejecutado el 19/11/2026, 05:18:39 · 199.9 s</p></header>
+<main>
+  <div class="kpis">
+    <div class="kpi"><b>30</b>Escenarios ejecutados</div>
+    <div class="kpi ok"><b>21</b>Pasaron</div>
+    <div class="kpi ko"><b>9</b>Fallaron</div>
+    <div class="kpi"><b>0</b>Omitidos</div>
+  </div>
+  <div class="help"><strong>Cómo leer este reporte:</strong> un escenario es una prueba con un texto concreto. «Pasó» significa que el sitio mostró lo esperado. «Falló» significa que el sitio mostró algo distinto; abajo está la descripción del error y una captura de pantalla de ese momento.</div>
+  <h2>Todos los escenarios</h2>
+  <table><thead><tr><th>ID</th><th>Escenario</th><th>Tipo</th><th>Resultado</th></tr></thead><tbody>
+<tr class="failed">
+  <td>ED-01</td><td>Un emoji cuenta como 1 carácter</td><td>Hallazgo a validar (el sitio se desvía de lo esperado)</td><td><span class="b ko">Falló</span></td>
+</tr>
+<tr class="failed">
+  <td>ED-02</td><td>Palabras unidas por espacio de no separación (NBSP)</td><td>Hallazgo a validar (el sitio se desvía de lo esperado)</td><td><span class="b ko">Falló</span></td>
+</tr>
+<tr class="failed">
+  <td>ED-03</td><td>Los números también son palabras repetidas</td><td>Hallazgo a validar (el sitio se desvía de lo esperado)</td><td><span class="b ko">Falló</span></td>
+</tr>
+<tr class="failed">
+  <td>ED-04</td><td>Las letras sueltas también son palabras repetidas</td><td>Hallazgo a validar (el sitio se desvía de lo esperado)</td><td><span class="b ko">Falló</span></td>
+</tr>
+<tr class="failed">
+  <td>ED-05</td><td>Palabras comunes en inglés (the, and)</td><td>Hallazgo a validar (el sitio se desvía de lo esperado)</td><td><span class="b ko">Falló</span></td>
+</tr>
+<tr class="failed">
+  <td>ED-06</td><td>Un link y un email cuentan como una palabra cada uno</td><td>Hallazgo a validar (el sitio se desvía de lo esperado)</td><td><span class="b ko">Falló</span></td>
+</tr>
+<tr class="failed">
+  <td>ED-07</td><td>Palabras unidas con guion bajo (hola_mundo)</td><td>Hallazgo a validar (el sitio se desvía de lo esperado)</td><td><span class="b ko">Falló</span></td>
+</tr>
+<tr class="failed">
+  <td>ED-08</td><td>Palabras unidas con barra (mañana/tarde)</td><td>Hallazgo a validar (el sitio se desvía de lo esperado)</td><td><span class="b ko">Falló</span></td>
+</tr>
+<tr class="failed">
+  <td>ED-09</td><td>Con AUTO-SAVE en OFF el texto no debería quedar guardado al recargar</td><td>Hallazgo a validar (el sitio se desvía de lo esperado)</td><td><span class="b ko">Falló</span></td>
+</tr>
+<tr class="passed">
+  <td>OB-01</td><td>Cuando hay empate, el sitio ordena por orden de aparición (no alfabético)</td><td>Observación (comportamiento documentado)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>OB-02</td><td>Keyword Density lista como máximo 10 palabras</td><td>Observación (comportamiento documentado)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>SC-01</td><td>El texto de ejemplo del enunciado</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>SC-02</td><td>Una sola palabra</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>SC-03</td><td>Mayúsculas y minúsculas cuentan como la misma palabra</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>SC-04</td><td>Signos de puntuación pegados a la palabra</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>SC-05</td><td>Espacios repetidos entre palabras</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>SC-06</td><td>Espacios al principio y al final del texto</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>SC-07</td><td>Los saltos de línea no cuentan como caracteres</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>SC-08</td><td>Tildes y la letra ñ</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>SC-09</td><td>Top 3 claro, sin empates</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>SC-10</td><td>Empate en el tercer lugar</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>SC-11</td><td>Palabra con guion interno es una sola palabra</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>SC-12</td><td>Palabras con letras y números juntos</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>SC-13</td><td>Escribir tecla por tecla y borrar todo actualiza los contadores</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>SC-14</td><td>Un texto largo (20.000 palabras) se cuenta bien y usa separador de miles</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>SC-15</td><td>El botón Clear deja todo en cero</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>SC-16</td><td>El total es el mismo en los tres lugares donde se muestra</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>SC-17</td><td>Pegar un texto desde el portapapeles (Ctrl+V) se cuenta igual que escribirlo</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>SC-18</td><td>El sitio y el algoritmo del punto 4 coinciden en un párrafo real</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>SC-19</td><td>Estado inicial con la configuración por defecto</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+  </tbody></table>
+  <h2>Detalle de los escenarios que fallaron</h2>
+<section class="card">
+  <h3>ED-01 · Un emoji cuenta como 1 carácter</h3>
+  <p><strong>Qué se probó:</strong> Una persona ve el emoji 😀 como un solo carácter. Si el sitio lo cuenta como dos, el total de caracteres no coincide con lo que se ve (importa si hay límites de caracteres, como un SMS o un campo con máximo).</p>
+  <p><strong>Texto ingresado:</strong> <code>"hola 😀 hola 😀 mundo"</code></p>
+  <p><strong>Descripción del error:</strong></p>
+  <ul><li>Número de caracteres de "hola 😀 hola 😀 mundo". Se esperaba «19» y el sitio mostró «21».</li></ul>
+  <p><strong>Hallazgo relacionado:</strong> BUG-002 [Desktop] Cada emoji cuenta como 2 caracteres</p>
+  <p><a href="evidencias/BUG-002%20%5BDesktop%5D%20Cada%20emoji%20cuenta%20como%202%20caracteres%20-%20ED-01.png"><img src="evidencias/BUG-002%20%5BDesktop%5D%20Cada%20emoji%20cuenta%20como%202%20caracteres%20-%20ED-01.png" alt="Evidencia ED-01" loading="lazy"></a></p>
+</section>
+<section class="card">
+  <h3>ED-02 · Palabras unidas por espacio de no separación (NBSP)</h3>
+  <p><strong>Qué se probó:</strong> Este espacio invisible aparece al copiar desde páginas web o Word. El contador de palabras y la lista de Keyword Density tienen que usar la misma regla, y hoy no la usan.</p>
+  <p><strong>Texto ingresado:</strong> <code>"hola mundo hola mundo"</code></p>
+  <p><strong>Descripción del error:</strong></p>
+  <ul><li>Top 3 palabras más repetidas (Keyword Density) de "hola mundo hola mundo". Diferencias: cantidad de palabras en el top: se esperaban 2 (ej. «hola» ×2, «mundo» ×2) y el sitio listó 1 («hola mundo» ×2) | posición 1: el sitio muestra «hola mundo», que no es una palabra del texto tal como se esperaba.</li></ul>
+  <p><strong>Hallazgo relacionado:</strong> BUG-003 [Desktop] Words y Keyword Density cuentan distinto con espacio invisible</p>
+  <p><a href="evidencias/BUG-003%20%5BDesktop%5D%20Words%20y%20Keyword%20Density%20cuentan%20distinto%20con%20espacio%20invisible%20-%20ED-02.png"><img src="evidencias/BUG-003%20%5BDesktop%5D%20Words%20y%20Keyword%20Density%20cuentan%20distinto%20con%20espacio%20invisible%20-%20ED-02.png" alt="Evidencia ED-02" loading="lazy"></a></p>
+</section>
+<section class="card">
+  <h3>ED-03 · Los números también son palabras repetidas</h3>
+  <p><strong>Qué se probó:</strong> El contador de palabras suma los números, pero Keyword Density los esconde. Si un número se repite mucho (por ejemplo un precio o un código), no aparece en el top.</p>
+  <p><strong>Texto ingresado:</strong> <code>"123 123 456 hola"</code></p>
+  <p><strong>Descripción del error:</strong></p>
+  <ul><li>Top 3 palabras más repetidas (Keyword Density) de "123 123 456 hola". Diferencias: cantidad de palabras en el top: se esperaban 3 (ej. «123» ×2, «456» ×1, «hola» ×1) y el sitio listó 1 («hola» ×1) | posición 1: se esperaba una palabra con 2 repeticiones y el sitio muestra «hola» con 1.</li></ul>
+  <p><strong>Hallazgo relacionado:</strong> BUG-004 [Desktop] Keyword Density omite números, letras sueltas y palabras comunes en inglés</p>
+  <p><a href="evidencias/BUG-004%20%5BDesktop%5D%20Keyword%20Density%20omite%20n%C3%BAmeros,%20letras%20sueltas%20y%20palabras%20comunes%20en%20ingl%C3%A9s%20-%20ED-03.png"><img src="evidencias/BUG-004%20%5BDesktop%5D%20Keyword%20Density%20omite%20n%C3%BAmeros,%20letras%20sueltas%20y%20palabras%20comunes%20en%20ingl%C3%A9s%20-%20ED-03.png" alt="Evidencia ED-03" loading="lazy"></a></p>
+</section>
+<section class="card">
+  <h3>ED-04 · Las letras sueltas también son palabras repetidas</h3>
+  <p><strong>Qué se probó:</strong> Mismo problema: letras sueltas como «b» o «c» se cuentan como palabras pero no aparecen en Keyword Density.</p>
+  <p><strong>Texto ingresado:</strong> <code>"b a c b a c d"</code></p>
+  <p><strong>Descripción del error:</strong></p>
+  <ul><li>Top 3 palabras más repetidas (Keyword Density) de "b a c b a c d". Diferencias: cantidad de palabras en el top: se esperaban 3 (ej. «b» ×2, «a» ×2, «c» ×2) y el sitio listó 0 (ninguna).</li></ul>
+  <p><strong>Hallazgo relacionado:</strong> BUG-004 [Desktop] Keyword Density omite números, letras sueltas y palabras comunes en inglés</p>
+  <p><a href="evidencias/BUG-004%20%5BDesktop%5D%20Keyword%20Density%20omite%20n%C3%BAmeros,%20letras%20sueltas%20y%20palabras%20comunes%20en%20ingl%C3%A9s%20-%20ED-04.png"><img src="evidencias/BUG-004%20%5BDesktop%5D%20Keyword%20Density%20omite%20n%C3%BAmeros,%20letras%20sueltas%20y%20palabras%20comunes%20en%20ingl%C3%A9s%20-%20ED-04.png" alt="Evidencia ED-04" loading="lazy"></a></p>
+</section>
+<section class="card">
+  <h3>ED-05 · Palabras comunes en inglés (the, and)</h3>
+  <p><strong>Qué se probó:</strong> El sitio esconde palabras como «the» y «and» de la lista, sin avisarlo. La prueba pide las 3 palabras más repetidas, y «the» es la más repetida de este texto.</p>
+  <p><strong>Texto ingresado:</strong> <code>"the cat and the dog and the bird"</code></p>
+  <p><strong>Descripción del error:</strong></p>
+  <ul><li>Top 3 palabras más repetidas (Keyword Density) de "the cat and the dog and the bird". Diferencias: posición 1: se esperaba una palabra con 3 repeticiones y el sitio muestra «cat» con 1 | posición 2: se esperaba una palabra con 2 repeticiones y el sitio muestra «dog» con 1.</li></ul>
+  <p><strong>Hallazgo relacionado:</strong> BUG-004 [Desktop] Keyword Density omite números, letras sueltas y palabras comunes en inglés</p>
+  <p><a href="evidencias/BUG-004%20%5BDesktop%5D%20Keyword%20Density%20omite%20n%C3%BAmeros,%20letras%20sueltas%20y%20palabras%20comunes%20en%20ingl%C3%A9s%20-%20ED-05.png"><img src="evidencias/BUG-004%20%5BDesktop%5D%20Keyword%20Density%20omite%20n%C3%BAmeros,%20letras%20sueltas%20y%20palabras%20comunes%20en%20ingl%C3%A9s%20-%20ED-05.png" alt="Evidencia ED-05" loading="lazy"></a></p>
+</section>
+<section class="card">
+  <h3>ED-06 · Un link y un email cuentan como una palabra cada uno</h3>
+  <p><strong>Qué se probó:</strong> Pegar una dirección web o un email es muy común. Entre espacios son dos bloques de texto, pero el sitio los parte en pedazos y cuenta 3 palabras.</p>
+  <p><strong>Texto ingresado:</strong> <code>"https://farmatodo.com info@farmatodo.com"</code></p>
+  <p><strong>Descripción del error:</strong></p>
+  <ul><li>Número de palabras de "https://farmatodo.com info@farmatodo.com". Se esperaba «2» y el sitio mostró «3».</li><li>Top 3 palabras más repetidas (Keyword Density) de "https://farmatodo.com info@farmatodo.com". Diferencias: cantidad de palabras en el top: se esperaban 2 (ej. «https://farmatodo.com» ×1, «info@farmatodo.com» ×1) y el sitio listó 3 («farmatodo» ×2, «com» ×2, «https» ×1) | posición 1: el sitio muestra «farmatodo», que no es una palabra del texto tal como se esperaba | posición 1: se esperaba una palabra con 1 repeticiones y el sitio muestra «farmatodo» con 2 | posición 2: el sitio muestra «com», que no es una palabra del texto tal como se esperaba | posición 2: se esperaba una palabra con 1 repeticiones y el sitio muestra «com» con 2 | posición 3: el sitio muestra «https», que no es una palabra del texto tal como se esperaba.</li></ul>
+  <p><strong>Hallazgo relacionado:</strong> BUG-005 [Desktop] Parte palabras en guion bajo, barras y direcciones web</p>
+  <p><a href="evidencias/BUG-005%20%5BDesktop%5D%20Parte%20palabras%20en%20guion%20bajo,%20barras%20y%20direcciones%20web%20-%20ED-06.png"><img src="evidencias/BUG-005%20%5BDesktop%5D%20Parte%20palabras%20en%20guion%20bajo,%20barras%20y%20direcciones%20web%20-%20ED-06.png" alt="Evidencia ED-06" loading="lazy"></a></p>
+</section>
+<section class="card">
+  <h3>ED-07 · Palabras unidas con guion bajo (hola_mundo)</h3>
+  <p><strong>Qué se probó:</strong> Un nombre como «hola_mundo» (usuarios, archivos) se ve como una palabra; el sitio la parte en dos.</p>
+  <p><strong>Texto ingresado:</strong> <code>"hola_mundo hola_mundo"</code></p>
+  <p><strong>Descripción del error:</strong></p>
+  <ul><li>Número de palabras de "hola_mundo hola_mundo". Se esperaba «2» y el sitio mostró «4».</li><li>Top 3 palabras más repetidas (Keyword Density) de "hola_mundo hola_mundo". Diferencias: cantidad de palabras en el top: se esperaban 1 (ej. «hola_mundo» ×2) y el sitio listó 2 («hola» ×2, «mundo» ×2) | posición 1: el sitio muestra «hola», que no es una palabra del texto tal como se esperaba | posición 2: el sitio muestra «mundo», que no es una palabra del texto tal como se esperaba.</li></ul>
+  <p><strong>Hallazgo relacionado:</strong> BUG-005 [Desktop] Parte palabras en guion bajo, barras y direcciones web</p>
+  <p><a href="evidencias/BUG-005%20%5BDesktop%5D%20Parte%20palabras%20en%20guion%20bajo,%20barras%20y%20direcciones%20web%20-%20ED-07.png"><img src="evidencias/BUG-005%20%5BDesktop%5D%20Parte%20palabras%20en%20guion%20bajo,%20barras%20y%20direcciones%20web%20-%20ED-07.png" alt="Evidencia ED-07" loading="lazy"></a></p>
+</section>
+<section class="card">
+  <h3>ED-08 · Palabras unidas con barra (mañana/tarde)</h3>
+  <p><strong>Qué se probó:</strong> Escrituras como «mañana/tarde» o «y/o» se usan mucho en textos de farmacia (posología). Se ven como un bloque, el sitio cuenta dos.</p>
+  <p><strong>Texto ingresado:</strong> <code>"mañana/tarde mañana/tarde"</code></p>
+  <p><strong>Descripción del error:</strong></p>
+  <ul><li>Top 3 palabras más repetidas (Keyword Density) de "mañana/tarde mañana/tarde". Diferencias: cantidad de palabras en el top: se esperaban 1 (ej. «mañana/tarde» ×2) y el sitio listó 2 («mañana» ×2, «tarde» ×2) | posición 1: el sitio muestra «mañana», que no es una palabra del texto tal como se esperaba | posición 2: el sitio muestra «tarde», que no es una palabra del texto tal como se esperaba.</li></ul>
+  <p><strong>Hallazgo relacionado:</strong> BUG-005 [Desktop] Parte palabras en guion bajo, barras y direcciones web</p>
+  <p><a href="evidencias/BUG-005%20%5BDesktop%5D%20Parte%20palabras%20en%20guion%20bajo,%20barras%20y%20direcciones%20web%20-%20ED-08.png"><img src="evidencias/BUG-005%20%5BDesktop%5D%20Parte%20palabras%20en%20guion%20bajo,%20barras%20y%20direcciones%20web%20-%20ED-08.png" alt="Evidencia ED-08" loading="lazy"></a></p>
+</section>
+<section class="card">
+  <h3>ED-09 · Con AUTO-SAVE en OFF el texto no debería quedar guardado al recargar</h3>
+  <p><strong>Qué se probó:</strong> El botón dice «AUTO-SAVE OFF» (apagado). Si cierro o recargo la página, lo razonable es empezar con el editor vacío. Si el texto vuelve, el sitio lo guardó igual en este navegador. Es un tema de coherencia y de privacidad en computadoras compartidas.</p>
+  <p><strong>Texto ingresado:</strong> <code>"texto privado de prueba"</code></p>
+  <p><strong>Descripción del error:</strong></p>
+  <ul><li>Contenido del editor después de recargar con AUTO-SAVE en OFF. Diferencias: texto privado de prueba.</li></ul>
+  <p><strong>Hallazgo relacionado:</strong> BUG-001 [Desktop] Con AUTO-SAVE en OFF el texto se guarda igual</p>
+  <p><a href="evidencias/BUG-001%20%5BDesktop%5D%20Con%20AUTO-SAVE%20en%20OFF%20el%20texto%20se%20guarda%20igual%20-%20ED-09.png"><img src="evidencias/BUG-001%20%5BDesktop%5D%20Con%20AUTO-SAVE%20en%20OFF%20el%20texto%20se%20guarda%20igual%20-%20ED-09.png" alt="Evidencia ED-09" loading="lazy"></a></p>
+</section>
+</main></body></html>

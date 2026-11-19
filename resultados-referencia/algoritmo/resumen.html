@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pruebas del algoritmo de frecuencia de palabras</title>
+<style>
+  body{font-family:Segoe UI,Arial,sans-serif;margin:0;background:#f5f6f8;color:#1c2330}
+  header{background:#0b5ed7;color:#fff;padding:24px 32px}
+  header h1{margin:0 0 4px;font-size:24px} header p{margin:0;opacity:.9}
+  main{max-width:1100px;margin:0 auto;padding:24px}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+  .kpi{background:#fff;border-radius:10px;padding:16px;text-align:center;box-shadow:0 1px 3px #0002}
+  .kpi b{display:block;font-size:34px} .kpi.ok b{color:#198754} .kpi.ko b{color:#c62828}
+  table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 3px #0002}
+  th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #eee;font-size:14px} th{background:#eef1f6}
+  .b{padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600;color:#fff}
+  /* Los colores de fondo van solo en la etiqueta (.b): las tarjetas de arriba (.kpi) usan .ok/.ko solo para el color del número. */
+  .b.ok{background:#198754}.b.ko{background:#c62828}.b.sk{background:#6c757d}
+  .card{background:#fff;border-left:5px solid #c62828;border-radius:8px;padding:8px 20px 16px;margin:16px 0;box-shadow:0 1px 3px #0002}
+  .card img{max-width:100%;border:1px solid #ddd;border-radius:6px} code{background:#f0f0f0;padding:1px 6px;border-radius:4px}
+  .help{background:#fff8e1;border:1px solid #ffe08a;border-radius:8px;padding:12px 16px;margin:0 0 24px;font-size:14px}
+  @media(max-width:700px){.kpis{grid-template-columns:repeat(2,1fr)}}
+</style></head><body>
+<header><h1>Pruebas del algoritmo de frecuencia de palabras</h1><p>Prueba técnica Farmatodo · Punto 4 · Ejecutado el 19/11/2026, 05:29:50 · 3.8 s</p></header>
+<main>
+  <div class="kpis">
+    <div class="kpi"><b>37</b>Escenarios ejecutados</div>
+    <div class="kpi ok"><b>37</b>Pasaron</div>
+    <div class="kpi ko"><b>0</b>Fallaron</div>
+    <div class="kpi"><b>0</b>Omitidos</div>
+  </div>
+  <div class="help"><strong>Cómo leer este reporte:</strong> cada escenario es una prueba del programa con un texto de entrada concreto (no usa navegador ni internet). «Pasó» significa que el programa devolvió exactamente lo esperado. «Falló» significa que devolvió algo distinto y abajo se muestra la descripción del error.</div>
+  <h2>Todos los escenarios</h2>
+  <table><thead><tr><th>ID</th><th>Escenario</th><th>Tipo</th><th>Resultado</th></tr></thead><tbody>
+<tr class="passed">
+  <td>AL-01</td><td>Produce exactamente la salida del ejemplo del enunciado</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>AL-02</td><td>Empate de frecuencia se ordena alfabéticamente</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>AL-03</td><td>Ordena por frecuencia descendente aunque el texto venga desordenado</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>AL-04</td><td>Mayúsculas y minúsculas son la misma palabra</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>AL-05</td><td>Ignora la puntuación en los bordes pero conserva la interna</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>AL-06</td><td>Tildes y ñ se conservan y se ordenan en español</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>AL-07</td><td>Cuenta los espacios y no cuenta los saltos de línea (\n y \r\n)</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>AL-08</td><td>Un emoji cuenta como 1 carácter</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>AL-09</td><td>Archivo vacío: 0 palabras, 0 caracteres y sin histograma</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>AL-10</td><td>Solo símbolos no cuenta como palabras</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>AL-11</td><td>Singular correcto: «1 word» y «1 character»</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>AL-12</td><td>Lee un archivo real de disco (UTF-8, con BOM y sin salto final)</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>AL-13</td><td>Un archivo que no existe da un mensaje claro y código de salida 1</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>AL-14</td><td>La opción --bars agrega un histograma visual proporcional</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>AL-15</td><td>Rendimiento: 1.000.000 de palabras en menos de 3 segundos</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>AL-16</td><td>Un emoji suelto cuenta como palabra y se agrupa con los iguales</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>AL-17</td><td>Una tilde escrita en dos formas cuenta como la misma palabra</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>XV-ED-01</td><td>Un emoji cuenta como 1 carácter</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>XV-ED-02</td><td>Palabras unidas por espacio de no separación (NBSP)</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>XV-ED-03</td><td>Los números también son palabras repetidas</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>XV-ED-04</td><td>Las letras sueltas también son palabras repetidas</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>XV-ED-05</td><td>Palabras comunes en inglés (the, and)</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>XV-ED-06</td><td>Un link y un email cuentan como una palabra cada uno</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>XV-ED-07</td><td>Palabras unidas con guion bajo (hola_mundo)</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>XV-ED-08</td><td>Palabras unidas con barra (mañana/tarde)</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>XV-SC-01</td><td>El texto de ejemplo del enunciado</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>XV-SC-02</td><td>Una sola palabra</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>XV-SC-03</td><td>Mayúsculas y minúsculas cuentan como la misma palabra</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>XV-SC-04</td><td>Signos de puntuación pegados a la palabra</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>XV-SC-05</td><td>Espacios repetidos entre palabras</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>XV-SC-06</td><td>Espacios al principio y al final del texto</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>XV-SC-07</td><td>Los saltos de línea no cuentan como caracteres</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>XV-SC-08</td><td>Tildes y la letra ñ</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>XV-SC-09</td><td>Top 3 claro, sin empates</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>XV-SC-10</td><td>Empate en el tercer lugar</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>XV-SC-11</td><td>Palabra con guion interno es una sola palabra</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+<tr class="passed">
+  <td>XV-SC-12</td><td>Palabras con letras y números juntos</td><td>Núcleo (requisito de la prueba)</td><td><span class="b ok">Pasó</span></td>
+</tr>
+  </tbody></table>
+  
+</main></body></html>

@@ -1,0 +1,74 @@
+﻿
+## ejemplo_prueba  "farmatodo farmatodo farmatodo farmatodo farmatodo cuida cuida tu salud\nfarmatodo cuida toda tu salud"
+   h1="14 words 99 characters" words=14 chars=99
+   keywords: farmatodo = 6 (43%) | cuida = 3 (21%) | tu = 2 (14%) | salud = 2 (14%) | toda = 1 (7%)
+
+## una_palabra  "hola"
+   h1="1 word 4 characters" words=1 chars=4
+   keywords: hola = 1 (100%)
+
+## stopwords_en  "the cat and the dog and the bird"
+   h1="8 words 32 characters" words=8 chars=32
+   keywords: cat = 1 (33%) | dog = 1 (33%) | bird = 1 (33%)
+
+## stopwords_es  "el gato y el perro y el pajaro"
+   h1="8 words 30 characters" words=8 chars=30
+   keywords: el = 3 (50%) | gato = 1 (17%) | perro = 1 (17%) | pajaro = 1 (17%)
+
+## mayusculas  "Hola hola HOLA mundo"
+   h1="4 words 20 characters" words=4 chars=20
+   keywords: hola = 3 (75%) | mundo = 1 (25%)
+
+## puntuacion  "Hola, hola. hola! mundo?"
+   h1="4 words 24 characters" words=4 chars=24
+   keywords: hola = 3 (75%) | mundo = 1 (25%)
+
+## espacios_multiples  "uno   dos    tres"
+   h1="3 words 17 characters" words=3 chars=17
+   keywords: uno = 1 (33%) | dos = 1 (33%) | tres = 1 (33%)
+
+## espacios_bordes  "   hola mundo   "
+   h1="2 words 16 characters" words=2 chars=16
+   keywords: hola = 1 (50%) | mundo = 1 (50%)
+
+## saltos_linea  "uno\ndos\n\ntres"
+   h1="3 words 10 characters" words=3 chars=10
+   keywords: uno = 1 (33%) | dos = 1 (33%) | tres = 1 (33%)
+
+## guion_apostrofe  "don't stop well-known well-known"
+   h1="4 words 32 characters" words=4 chars=32
+   keywords: well-known = 2 (67%) | stop = 1 (33%)
+
+## numeros  "123 123 456"
+   h1="3 words 11 characters" words=3 chars=11
+   keywords:  = 
+
+## acentos_enie  "canci├│n canci├│n ni├▒o ni├▒o ├írbol"
+   h1="5 words 31 characters" words=5 chars=31
+   keywords: canci├│n = 2 (40%) | ni├▒o = 2 (40%) | ├írbol = 1 (20%)
+
+## empate_alfabetico  "b a c b a c d"
+   h1="7 words 13 characters" words=7 chars=13
+   keywords:  = 
+
+## top3_con_empate_en_3er_lugar  "uno uno uno dos dos tres tres cuatro"
+   h1="8 words 36 characters" words=8 chars=36
+   keywords: uno = 3 (38%) | dos = 2 (25%) | tres = 2 (25%) | cuatro = 1 (13%)
+
+## emoji  "hola ≡ƒÿÇ hola ≡ƒÿÇ mundo"
+   h1="5 words 21 characters" words=5 chars=21
+   keywords: hola = 2 (40%) | ≡ƒÿÇ = 2 (40%) | mundo = 1 (20%)
+
+## solo_simbolos  "!!! ??? ..."
+   h1="0 words 11 characters" words=0 chars=11
+   keywords:  = 
+
+## tabulacion  "a\tb\tc"
+   h1="3 words 5 characters" words=3 chars=5
+   keywords:  = 
+
+## url_email  "https://farmatodo.com info@farmatodo.com"
+   h1="3 words 40 characters" words=3 chars=40
+   keywords: farmatodo = 2 (33%) | com = 2 (33%) | https = 1 (17%) | info = 1 (17%)
+
+AFTER RELOAD box = "farmatodo farmatodo farmatodo farmatodo farmatodo cuida cuida tu salud\nfarmatodo cuida toda tu salud"

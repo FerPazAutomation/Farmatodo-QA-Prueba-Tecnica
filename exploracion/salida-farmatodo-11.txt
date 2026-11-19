@@ -1,0 +1,20 @@
+﻿== (a) estabilidad de precio/promo (6 cargas nuevas, desktop, directo a la URL)
+carga 1 | Aveno: Shampoo Aveno Infantil Frasco x 250 ml $33.230
+carga 1 | Johnson: Shampoo JohnsonΓÇÖs Baby Original Botella x 200 ml $7.880
+carga 2 | Aveno: Shampoo Aveno Infantil Frasco x 250 ml $33.230
+carga 2 | Johnson: Shampoo JohnsonΓÇÖs Baby Original Botella x 200 ml $7.880
+carga 3 | Aveno: Shampoo Aveno Infantil Frasco x 250 ml $33.230
+carga 3 | Johnson: Shampoo JohnsonΓÇÖs Baby Original Botella x 200 ml $7.880
+carga 4 | Aveno: Shampoo Aveno Infantil Frasco x 250 ml $33.230
+carga 4 | Johnson: Shampoo JohnsonΓÇÖs Baby Original Botella x 200 ml $7.880
+carga 5 | Aveno: Shampoo Aveno Infantil Frasco x 250 ml $33.230
+carga 5 | Johnson: Shampoo JohnsonΓÇÖs Baby Original Botella x 200 ml $7.880
+carga 6 | Aveno: Shampoo Aveno Infantil Frasco x 250 ml $33.230
+carga 6 | Johnson: Shampoo JohnsonΓÇÖs Baby Original Botella x 200 ml $7.880
+
+== (b) comportamiento del '1' tras el '+'
+tras '+': cart header tail = " Tiendas "
+html de la tarjeta (control): <!----> <div data-testid="product-card" class="product-card"> <!--?lit$359308780$--> <
+click 1 sobre el '1' -> cart header tail = " Tiendas "
+click 2 sobre el '1' -> cart header tail = " Tiendas "
+click 3 sobre el '1' -> cart header tail = " Tiendas "

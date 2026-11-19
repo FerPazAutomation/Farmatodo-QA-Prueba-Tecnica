@@ -1,0 +1,12 @@
+﻿intento 1
+  antes de F5  : 25% ┬íEXCLUSIVO WEB Y APP FARMATODO! Shampoo Aveno Infantil Frasco x 250 ml $24.923 $33.230
+  despues de F5: 25% ┬íEXCLUSIVO WEB Y APP FARMATODO! Shampoo Aveno Infantil Frasco x 250 ml $24.923 $33.230
+  url: https://www.farmatodo.com.ar/buscar?product=shampoo&departamento=Todos&filtros=
+intento 2
+  antes de F5  : 25% ┬íEXCLUSIVO WEB Y APP FARMATODO! Shampoo Aveno Infantil Frasco x 250 ml $24.923 $33.230
+  despues de F5: 25% ┬íEXCLUSIVO WEB Y APP FARMATODO! Shampoo Aveno Infantil Frasco x 250 ml $24.923 $33.230
+  url: https://www.farmatodo.com.ar/buscar?product=shampoo&departamento=Todos&filtros=
+intento 3
+  antes de F5  : 25% ┬íEXCLUSIVO WEB Y APP FARMATODO! Shampoo Aveno Infantil Frasco x 250 ml $24.923 $33.230
+  despues de F5: 25% ┬íEXCLUSIVO WEB Y APP FARMATODO! Shampoo Aveno Infantil Frasco x 250 ml $24.923 $33.230
+  url: https://www.farmatodo.com.ar/buscar?product=shampoo&departamento=Todos&filtros=
