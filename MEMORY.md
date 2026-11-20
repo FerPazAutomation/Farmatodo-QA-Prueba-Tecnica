@@ -92,8 +92,7 @@ npm run typecheck
 
 1. ✅ **Repo publicado en GitHub (19/11):** https://github.com/FerPazAutomation/Farmatodo-QA-Prueba-Tecnica (rama `main`, historial limpio de 1 commit). Verificado con un clon limpio: `npm install`, `typecheck`, 37/37 del algoritmo, 19/19 del visor y 36 enlaces de `README.md` y `docs/` sin romper. Falta: confirmar que el repo es visible para Farmatodo (hoy es público) y poner este enlace en el correo.
 2. **Redactar y enviar el correo único** con preguntas y supuestos. El borrador se quitó de `docs/` (19/11) por decisión de Fernando; sigue en el historial de git (`git show HEAD:docs/05-correo-preguntas-y-supuestos.md`) si hay que recuperarlo. Confirmar destinatario. Solo se puede mandar uno.
-3. Confirmar los 3 problemas de UX elegidos (hay 4 observaciones adicionales por si prefiere cambiar alguno).
-4. Opcional: probar BUG-007 en un celular real y revisar a mano el selector de ciudad (no se pudo automatizar) y la burbuja «1» de la grilla (resultado no concluyente).
+3. Limitación conocida (no bloquea la entrega): BUG-007 se verificó con emulación de iPhone, no en un celular real. El selector de ciudad no se pudo automatizar y la burbuja «1» de la grilla quedó como OBS-03, sin confirmar.
 5. Revisión completa del 19/11 (18:33) con los subagentes `revisor*`: typecheck limpio, 37/37, 19/19 y 21/30 con los 9 fallos esperados. Quedó una lista de mejoras de redacción y de repeticiones entre documentos (ver chat); se aplican solo con el OK de Fernando.
 
 ## 7. Supuestos y decisiones fijas

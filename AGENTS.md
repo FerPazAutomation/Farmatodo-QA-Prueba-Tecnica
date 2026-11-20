@@ -96,7 +96,7 @@ El coordinador nunca se salta una aprobación de Fernando. Un cambio muy chico (
 ## Límites
 
 - ✅ **Siempre:** comentar el código nuevo en español; calcular los valores esperados a mano; correr `npm run typecheck` y las pruebas del área tocada antes de terminar; regenerar el visor si se tocó el algoritmo o la plantilla; actualizar `MEMORY.md` cuando cambie el estado.
-- ⚠️ **Preguntar antes:** instalar dependencias nuevas; crear archivos nuevos fuera de `docs/`, `evidencias/` y `specs/`; cambiar las reglas de qué es una palabra o un carácter; cambiar el formato de `resultados.json` o del reporte; elegir otros 3 problemas de UX; cualquier cosa que cambie el criterio de prueba de Fernando.
+- ⚠️ **Preguntar antes:** instalar dependencias nuevas; crear archivos nuevos fuera de `docs/`, `evidencias/` y `specs/`; cambiar las reglas de qué es una palabra o un carácter; cambiar el formato de `resultados.json` o del reporte; cambiar los 3 problemas de UX ya entregados; cualquier cosa que cambie el criterio de prueba de Fernando.
 - 🚫 **Nunca:** editar a mano `visor/contador-palabras.html`; modificar la configuración del sitio que se prueba; hacer que un `ED-xx` pase ocultando el defecto; copiar valores esperados desde el sitio; hacer `git push`, crear el repo en GitHub o enviar el correo sin el OK de Fernando (el correo solo se puede mandar una vez); borrar `evidencias/` o `resultados-referencia/`; escribir que el código lo hizo Fernando.
 
 ## Verificación

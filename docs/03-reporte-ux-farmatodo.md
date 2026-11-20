@@ -108,12 +108,12 @@ Definiciones completas en [`docs/02-reporte-fallas-wordcounter.md`](02-reporte-f
 
 ## Observaciones (todavía no son bugs confirmados)
 
-Estas se anotaron durante la exploración. Si el equipo las confirma, se pasan a bug con la misma ficha.
+Estas se anotaron durante la exploración. No forman parte de los 3 bugs entregados. Cada una dice qué le falta para ser bug confirmado.
 
 | ID | Observación | Plataforma | Evidencia | Por qué no es bug todavía |
 |---|---|---|---|---|
-| OBS-01 | La etiqueta «¡EXCLUSIVO WEB Y APP FARMATO…» se corta en la tarjeta del producto. | Desktop | ![OBS-01](<../evidencias/farmatodo/OBS-01 [Desktop] Etiqueta de promo cortada en la tarjeta.png>) | Es un defecto visual claro. Se deja como observación porque no era parte de los 3 problemas pedidos. **Candidato a bug.** |
-| OBS-02 | En tablet (820 px) la grilla de resultados se ve como la de celular, estirada, con mucho espacio en blanco y el botón + lejos del producto. | Tablet | ![OBS-02 tablet](<../evidencias/farmatodo/OBS-02 [Tablet] Diseño de celular estirado en 820 px.png>) · referencia: ![OBS-02 desktop](<../evidencias/farmatodo/OBS-02 [Desktop] Referencia para comparar con tablet.png>) | Es una impresión visual, falta medir el diseño. **Candidato a bug.** |
+| OBS-01 | La etiqueta «¡EXCLUSIVO WEB Y APP FARMATO…» se corta en la tarjeta del producto. | Desktop | ![OBS-01](<../evidencias/farmatodo/OBS-01 [Desktop] Etiqueta de promo cortada en la tarjeta.png>) | Es un defecto visual claro. No entra en los 3 bugs entregados. Para confirmarlo como bug hace falta revisarlo en un celular o tablet real. |
+| OBS-02 | En tablet (820 px) la grilla de resultados se ve como la de celular, estirada, con mucho espacio en blanco y el botón + lejos del producto. | Tablet | ![OBS-02 tablet](<../evidencias/farmatodo/OBS-02 [Tablet] Diseño de celular estirado en 820 px.png>) · referencia: ![OBS-02 desktop](<../evidencias/farmatodo/OBS-02 [Desktop] Referencia para comparar con tablet.png>) | Es una impresión visual. Para confirmarlo como bug hace falta medir el diseño en tablet real. |
 | OBS-03 | Al presionar + en la grilla de desktop, el botón se convierte en una burbuja con «1». No se pudo confirmar si responde a los clics. | Desktop | ![OBS-03](<../evidencias/farmatodo/OBS-03 [Desktop] Botón 1 de la grilla, sin respuesta confirmada.png>) | El recorrido automático no es confiable en este punto. Validar a mano. |
 | OBS-04 | Durante la exploración, la consola del navegador mostró bloqueos CORS hacia un servicio de ubicación y hacia un servicio de clientes. | Todas | Sin captura | Puede ser normal en un entorno automatizado. Se anota para el equipo de desarrollo. |
 

@@ -35,16 +35,46 @@ Otros documentos:
 
 ## Requisitos
 
-- **Node.js 20 o superior** (se probó con Node 26).
-- Conexión a internet para el punto 1 (usa el sitio real).
-- Windows, macOS o Linux. Los comandos de abajo están escritos para PowerShell; en otros shells son iguales.
+Antes de empezar, instala estas dos herramientas (una sola vez):
 
-## Instalación
+1. **Git:** https://git-scm.com/downloads (sirve para bajar el proyecto).
+2. **Node.js 20 o superior**, versión LTS: https://nodejs.org (se probó con Node 26). Para comprobarlo, abre una terminal y escribe `node -v`. Debe mostrar `v20` o un número mayor.
 
-```powershell
-npm install
-npx playwright install chromium
-```
+Además:
+
+- Conexión a internet para instalar y para el punto 1 (usa el sitio real de wordcounter.net). El punto 4 (algoritmo y página web local) funciona sin internet una vez instalado.
+- Windows, macOS o Linux. Los comandos están escritos para PowerShell; en otras terminales son iguales.
+
+## Instalación desde cero
+
+Abre una terminal (PowerShell en Windows) y sigue estos pasos:
+
+1. **Bajar el proyecto** desde GitHub y entrar a su carpeta:
+   ```powershell
+   git clone https://github.com/FerPazAutomation/Farmatodo-QA-Prueba-Tecnica.git
+   cd Farmatodo-QA-Prueba-Tecnica
+   ```
+2. **Instalar las librerías del proyecto.** Se descargan en la carpeta `node_modules/`, que no se sube a git:
+   ```powershell
+   npm install
+   ```
+3. **Instalar el navegador de las pruebas** (Chromium, con Playwright):
+   ```powershell
+   npx playwright install chromium
+   ```
+4. **Comprobar que todo funciona.** Este comando no necesita internet y debe terminar con 37 pruebas pasadas:
+   ```powershell
+   npm run test:algoritmo
+   ```
+
+Luego puedes seguir con la tabla de «Cómo ejecutar» más abajo.
+
+**Problemas frecuentes:**
+
+- **Aparece «la ejecución de scripts está deshabilitada» al usar `npm`** (Windows). Ejecuta una sola vez en PowerShell `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`, confirma con `S` y vuelve a intentar.
+- **`node` o `npm` no se reconocen.** Cierra la terminal y ábrela de nuevo después de instalar Node.js.
+- **`npx playwright install chromium` falla.** Revisa la conexión a internet y vuelve a correrlo.
+- **Las pruebas del punto 1 no pueden abrir el sitio.** Revisa la conexión. Si el sitio está caído, esas pruebas fallan, pero el punto 4 sigue funcionando.
 
 ## Cómo ejecutar
 
